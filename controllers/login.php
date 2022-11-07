@@ -1,40 +1,22 @@
 <?php
+include("connection.php");
 
-
-
-$user = $_POST['user'];
-$password = $_POST['password'];
+$user = mysqli_real_escape_string($connect, trim($_POST['user']));
+$password = mysqli_real_escape_string($connect, trim(md5($_POST['password'])));
 $_SESSION["user"] = $user;
 
 
 if ($_POST['user'] == '') {
-    echo ("
-    <script>
-    alert('Campo de User Vazio!')
-    </script>");
     header('Location: /linkfour/login.php');
 }
 if ($_POST['password'] == '') {
-    echo ("<script>
-    alert('Campo de Senha Vazio!')
-    </script>");
     header('Location: /linkfour/login.php');
 }
-
-
-
 
 
 if ($_POST['user'] != '' && $_POST['password'] != '') {
 
-    var_dump($_POST);
-
-    $servername = "localhost";
-    $database = "linkfour";
-    $psswrd = "";
-    $username = "root";
-
-    $connect = mysqli_connect($servername, $username, $psswrd, $database) or die('Não foi posisivel conectar');
+    
 
     if (!isset($_POST['user']) || !isset($_POST['password'])) {
         header('location: /linkfour/login.php');
@@ -42,8 +24,8 @@ if ($_POST['user'] != '' && $_POST['password'] != '') {
     } else {
         session_start();
         
-        $user = mysqli_real_escape_string($connect, $_POST['user']);
-        $password = mysqli_real_escape_string($connect, $_POST['password']);
+        $user = mysqli_real_escape_string($connect, $user);
+        $password = mysqli_real_escape_string($connect, $password);
 
         $query = "select id, usuario from cadastro where usuario='{$user}' and senha = '{$password}'";
 
@@ -56,8 +38,9 @@ if ($_POST['user'] != '' && $_POST['password'] != '') {
             header('Location: /linkfour/customize.php');
             exit();
         } else {
+            // echo "<script> alert( Usuario e/ou senha incorreto(s) ) </script>"; 
             header('Location: /linkfour/login.php');
-
+            
             exit();
         }
     }
