@@ -54,7 +54,9 @@
 
                     <div class="link"> <label>Link desejado: </b><input type="url" name="link" id="link"> </div>
 
-                    <div class="bt"><button type="submit" >Adicionar</button></div>
+                    <div class="bt"><button type="submit" onclick="">Adicionar</button></div>
+
+                    <!-- add verificador se os campos estão prenchidos ou não -->
 
                 </div>
 

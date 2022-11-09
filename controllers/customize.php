@@ -6,9 +6,17 @@ $icon = $_POST["imagem"];
 $link = $_POST["link"];
 $user = $_SESSION["user"];
 
-$sql = "INSERT INTO customize (id_customize, usuario, icon, link) VALUES ( ' ' ,'$user', '$icon', '$link')";
 
-if (mysqli_query($connect, $sql)) {
-    header('Location: /linkfour/customize.php');
-    exit();
-} 
+if ($icon != "") {
+
+} elseif ($link != "") {
+
+} else {
+
+    $sql = "INSERT INTO customize (id_customize, usuario, icon, link) VALUES ( ' ' ,'$user', '$var_dump($icon);', '$var_dump($link);')";
+
+    if (mysqli_query($connect, $sql)) {
+        header('Location: /linkfour/customize.php');
+        exit();
+    }
+}

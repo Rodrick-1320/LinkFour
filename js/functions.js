@@ -1,3 +1,4 @@
+
 function logout(){
     alert('Você acaba de fazer Logout');
 }
@@ -39,3 +40,8 @@ function cadastro(){
     return true;
 
 }
+
+function customize(){
+    
+}
+

@@ -21,7 +21,7 @@ if ($row['total'] == 1) {
 
 $msg = "";
 
-if ($fone == "") {
+if ($fone ) {
     $msg .= 'Preencha o campo de telefone ';
     echo "<script> alert( ' $msg ' ) </script>";
 } elseif ($nome == "") {

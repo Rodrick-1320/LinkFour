@@ -38,7 +38,6 @@
     $query = "select icon, link, usuario from customize where usuario='{$user}'";
     $result = mysqli_query($conn, $query);
 
-    var_dump($result)
     ?>
 
     <div class="container">
