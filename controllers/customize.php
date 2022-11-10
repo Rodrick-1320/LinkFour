@@ -13,7 +13,7 @@ if ($icon != "") {
 
 } else {
 
-    $sql = "INSERT INTO customize (id_customize, usuario, icon, link) VALUES ( ' ' ,'$user', '$var_dump($icon);', '$var_dump($link);')";
+    $sql = "INSERT INTO customize (id_customize, usuario, icon, link) VALUES ( ' ' ,'$user', '$icon', '$link')";
 
     if (mysqli_query($connect, $sql)) {
         header('Location: /linkfour/customize.php');

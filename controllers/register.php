@@ -8,20 +8,19 @@ $usuario = mysqli_real_escape_string($connect, trim($_POST['usuario']));
 $senha = mysqli_real_escape_string($connect, trim(md5($_POST['senha'])));
 
 
-$sql = "select count(*) as total from usuario where usuario = '$usuario'";
+$sql = "select count(*) as total from cadastro where usuario = '$usuario'";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($result);
 
 if ($row['total'] == 1) {
     $_SESSION['usuario_existe'] = true;
-    header('Location: cadastro.php');
+    header('Location: register.php');
     exit;
 }
 
-
 $msg = "";
 
-if ($fone ) {
+if ($fone  == "" ) {
     $msg .= 'Preencha o campo de telefone ';
     echo "<script> alert( ' $msg ' ) </script>";
 } elseif ($nome == "") {
@@ -35,26 +34,10 @@ if ($fone ) {
     echo "<script> alert( ' $msg ' ) </script>";
 } else {
 
-    // Check connection
-    if (!$conn) {
-    }
-
-    $sql = "select count(*) as total from usuario where usuario = '$usuario'";
-    $result = mysqli_query($conexao, $sql);
-    $row = mysqli_fetch_assoc($result);
-
-    if ($row['total'] == 1) {
-        $_SESSION['usuario_existe'] = true;
-        header('Location: register.php');
-        exit;
-    }
-
     $sql = "INSERT INTO cadastro (id, fone, nome, usuario, senha) VALUES ( ' ' , '$fone', '$nome', '$usuario', '$senha')";
 
     if (mysqli_query($connect, $sql)) {
-        echo "<script>
-     alert('CONTA CRIADA')
-     </script>";
+        
     }
     mysqli_close($connect);
 }
