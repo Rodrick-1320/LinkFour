@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
 
     <link rel="stylesheet" type="text/css" href="css/style-3.css" media="screen" />
+    <script src="js/functions.js"></script>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,10 +43,10 @@
 
                         <input type="radio" name="imagem" id="i5" value="5">
                         <label for="i5"><img src="imgs/twitter.svg" alt=""></label>
-                
+
                         <input type="radio" name="imagem" id="i6" value="6">
                         <label for="i6"><img src="imgs/reddit.svg" alt=""></label>
-            
+
                         <input type="radio" name="imagem" id="i7" value="7">
                         <label for="i7"><img src="imgs/globe.svg" alt=""></label>
 
@@ -56,16 +58,33 @@
 
                     <div class="bt"><button type="submit" onclick="">Adicionar</button></div>
 
-                    <!-- add verificador se os campos estão prenchidos ou não -->
 
                 </div>
 
-                
-
-
-
             </form>
 
+        </div>
+
+        <div class="alerts">
+
+            <?php if (@$_SESSION['empty_fields'] == true) : ?>
+                <div class="existing_user">
+                    <h3>Há Campo(s) Vazios!</h3>
+                </div>
+            <?php endif;
+            unset($_SESSION['empty_fields']); ?>
+
+            <?php if (@$_SESSION['added_data'] == true) : ?>
+                <div class="registration_status">
+                    <h3>link adicionado com sucesso!!!</h3>
+                </div>
+            <?php endif;
+            unset($_SESSION['added_data']); ?>
+
+        </div>
+
+        <div class="bttn">
+            <button><a href="controllers/logout.php" onclick="logout()">Sair</a></button>
         </div>
 
     </div>
@@ -74,7 +93,5 @@
 </html>
 
 <?php
-
-    session_start();
-    include('functions/check_login.php');
+include('functions/check_login.php');
 ?>

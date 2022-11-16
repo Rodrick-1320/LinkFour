@@ -61,7 +61,7 @@
             <?php endif; unset($_SESSION['account_created']); ?>
 
             <?php if(@$_SESSION['empty_fields'] == true): ?>
-                <div class="registration_status">
+                <div class="existing_user">
                     <h3>Há Campo(s) Vazios!</h3>
                 </div>
             <?php endif; unset($_SESSION['empty_fields']); ?>
@@ -77,8 +77,3 @@
 </body>
 
 </html>
-
-
-<?php
-
-?>

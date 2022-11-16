@@ -16,7 +16,7 @@ if ($row['total'] == 1) {
         header('Location: /linkfour/register.php');
         $_SESSION['existing_user'] = true ;    
 } else{
-    if($fone == "" || $nome == "" || $usuario == "" || $senha == "" ){
+    if($fone == "" || $nome == "" || $usuario == "" || $senha == "d41d8cd98f00b204e9800998ecf8427e" ){
         $_SESSION['empty_fields'] = true;
     }else{
         $_SESSION['account_created'] = true;
